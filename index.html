@@ -121,7 +121,7 @@
 			var iframe = document.getElementById("iframe");
 			var win = iframe.contentWindow;
 			function reset(){
-				frame.src = frame.src;
+				win.location.reload(true);
 			}
 			function shuffle() {
 				win.cube.shuffle(20);
