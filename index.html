@@ -348,7 +348,8 @@
 
 		<script charset="utf-8">
 			function resetCube() {
-				document.getElementById("iframe").contentLocation.reload();
+				var iframe = document.getElementById("iframe");
+				iframe.contentLocation.reload();
 			}
 			function executeAlg(alg) {
 				var cube = document.getElementById("iframe").contentWindow.cube;
