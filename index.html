@@ -255,8 +255,8 @@
 						1. Two edges are the right color, and adjacent edges are swapped
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('RuurruRRurruuRU')">Setup</button>
+						<button onclick="executeAlg('BUbUBUUbU')">Solve</button>
 					</div>
 
 				</div>
@@ -352,6 +352,7 @@
 				iframe.contentWindow.location.reload();
 			}
 			function executeAlg(alg) {
+				console.log(alg);
 				var cube = document.getElementById("iframe").contentWindow.cube;
 				cube.twist(alg);
 			}
@@ -360,7 +361,7 @@
 				resetCube();
 				iframe.addEventListener("load", function() {
 					executeAlg(alg);
-				});
+				}, {once: true});
 			}
 		</script>	
 	</body>
