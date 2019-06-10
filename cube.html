@@ -16,6 +16,31 @@
 
 		<title>Cuber</title>
 
+		<style>
+			.row {
+				display: flex;
+				justify-content: center;
+			}
+
+			.column {
+				flex: 50%;
+			}
+
+			.button {
+				flex-basis: 10rem;
+				margin: 5px;
+				padding: 5px;
+				color: black;
+				border: none;
+				background-color: silver;
+				transition: 0.3s;
+			}
+
+			.button:hover {
+				background-color: gray;	
+			}
+		</style>
+
 
 
 		<!-- compiled cube code -->	
@@ -86,10 +111,23 @@
 		<script charset="utf-8" src="examples/basic/scripts/main.js"></script>		
 
 
+	<script charset="utf-8">
+		function shuffle() {
+			cube.shuffle(20);
+		}
+
+		function reset() {
+			location.reload();
+		}
+	</script>
 
 	</head>
 	<body class="graydient" >
 		<div id="container" ></div>
+		<div class="row">
+			<button onclick="shuffle()" class="button">Scramble</button>
+			<button onclick="reset()" class="button">Reset</button>
+		</div>
 		<div id="fail">
 			<h1>Sorry,</h1>
 			<h2>Cubers broken</h2>

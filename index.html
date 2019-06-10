@@ -29,35 +29,329 @@
 				flex-basis: 10rem;
 				margin: 5px;
 			}
+
+			.topnav {
+				background-color: #333;
+				overflow: hidden;
+			}
+
+			.topnav button {
+				float: left;
+				color: #inherit;
+				border: none;
+				outline: none;
+				cursor: pointer;
+				background-color: #333;
+				color: #f2f2f2;
+				text-align: center;
+				padding: 14px 16px;
+				transition: 0.3s;
+			}
+
+			.topnav button:hover {
+				background-color: #000;
+			}
+
+			.topnav button.active {
+				background-color: #ccc;
+				color: black;
+			}
+
+			.tabcontent {
+				display: none;
+				padding: 6px 12px;
+				border: 1px solid #ccc;
+				border-top: none;
+			}
+
+			.tabcontent h3 {
+				color: black;
+				text-align: center;
+				font-size: 2.5em;
+				padding: 1em;
+			}
+
+			.tabcontent p {
+				color: black;
+				padding: 0em 5em;
+				font-size: 1.5em;
+				line-height: 1.6;
+			}
+
+			.tabcontent button {
+				background-color: #333;
+				color: white;
+				padding: 0.5em 1.5em;
+				border: none;
+				transition: 0.3s;
+				margin: 0.5em;
+			}
 		</style>
 
 
 		<title>Cuber</title>
 
 	</head>
-	<body class="graydient">
+	<body style="background-color:black">
 		<div class="row" style="height:100%">
-			<div class="column">
-				<iframe id="iframe" frameBorder="0" src="cube.html" style="height:95%; width: 100%"></iframe>
-				<div class="row">
-					<button onclick="shuffle()" class="button">Scramble</button>
-					<button onclick="reset()" class="button">Reset</button>
+			<div class="column" id="learning" style="background-color: #d0d0d0">
+				<div class="topnav">
+					<button class="tablinks" onclick="openTab(event, 'Intro')" id="defaultOpen">Intro</button>
+					<button class="tablinks" onclick="openTab(event, 'First Step')" id="defaultOpen">First Step</button>
+					<button class="tablinks" onclick="openTab(event, 'Bottom Edges')">Bottom Edges</button>
+					<button class="tablinks" onclick="openTab(event, 'Bottom Corners')">Bottom Corners</button>
+					<button class="tablinks" onclick="openTab(event, 'Middle Edges')">Middle Edges</button>
+					<button class="tablinks" onclick="openTab(event, 'Top Edges')">Top Edges</button>
+					<button class="tablinks" onclick="openTab(event, 'Swap Edges')">Swap Edges</button>
+					<button class="tablinks" onclick="openTab(event, 'Swap Corners')">Swap Corners</button>
+					<button class="tablinks" onclick="openTab(event, 'Flip Corners')">Top Corners</button>
+				</div>
+				<div id="Intro" class="tabcontent">
+					<h3>Welcome!</h3>
+					<p>
+						How's it goin? You're either here because want to learn to solve a Rubik's cube, or you want to grade my CAT 125R project.
+						Well, either way, the next couple of tabs are going to teach you how to solve a Rubik's cube in one of the simplest ways
+						possible. 
+					</p>
+					<p>
+						Hopefully you'll leave this website looking like a genius to other people, because even though it really doesn't take one to solve
+						these things, a lot of people think it does.
+					</p>
+				</div>
+				<div id="First Step" class="tabcontent">
+					<h3>Understanding the Cube</h3>
+					<p>
+						At first, the cube can be a little daunting, because when it's mixed up, it just looks like a bunch of colors on a 3x3x3 cube. 
+						So the first step we want to take doesn't involve any algorithms, just thinking about how the cube works.
+					</p>
+					<p>
+						The cube has six faces, each facing having a color. These center cubes don't really move, it's all of the other cubelets that move around them. 
+					</p>
+					<p>
+						For each color, there's four edges, and each of these edges are shared with another face's color. 
+					</p>
+					<p>
+						Likewise, for each color, there's four corner, and each of these corners are shared with TWO other face's colors.
+					</p>
+					<p>
+						Pretty much every move you're gonna do involves moving edges and corners around center faces. Play around with the cube on the right so you get a good feel 
+						for how the cube works. 
+					</p>
+				</div>
+				<div id="Bottom Edges" class="tabcontent">
+					<h3>First Layer</h3>
+					<p>
+						After the cube is totally mixed up, the first step is to pick a color. We can think of the cube like it has three layers, 
+						and we start solving it from the bottom up. First, we solve the first/bottom layer, followed by the second/middle layer, and finally comes the third/last layer. 
+						Most beginners are recommended to start with the white face, and that's what we'll be using in our examples with the cube on the right.
+					</p>
+					<p>
+						So using white as our starting color, we want to build a cross on the white face, while also lining up the red, blue, orange, 
+						and green edges with their center. There's not really any algorithms here, because there's nothing solved yet to mess up.
+					</p>
+
+					<div class="row">
+						<button onclick="executeAlg('fdf')">Example of a good cross</button>
+						<button>Example of a bad cross</button>
+					</div>
+				</div>
+				<div id="Bottom Corners" class="tabcontent">
+					<h3>Finishing the first layer</h3>
+					<p>
+						After getting the cross down, the next step is to solve the corners of the first layer. So, one at a time, you'll look for the white 
+						corners. When you find one, if it's in the third layer, then you want to move it above the corner where it should be. Now, there's three different 
+						scenarios, depending on which way the white sticker is facing.
+					</p>
+					<p style="padding:0em 10em">
+						1. It's facing left
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						2. It's facing right
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						3. It's facing up
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+				</div>
+				<div id="Middle Edges" class="tabcontent">
+					<h3>Solving the Middle Layer</h3>
+					<p>
+						The next step is to solve the middle layer, which involves finding the four edge pieces with no yellow or white, 
+						and placing them in the correct spot. There's four possible scenarious for any given middle edge, and I'll be using 
+						the orange and blue edge as an example.
+					</p>
+					<p style="padding:0em 10em">
+						1. It's already in the right place in the right orientation. Yay!
+					</p>
+					<p style="padding:0em 10em">
+						2. It's in the top layer, and the middle layer sticker it connects to is on the left. 
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						3. It's in the top layer, and the middle layer sticker it connects to is on the right. 
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						4. It's already in the right place, but the orientation is wrong. :(
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+				</div>
+				<div id="Top Edges" class="tabcontent">
+					<h3>Starting the Top Layer</h3>
+					<p>
+						The cube is starting to look mostly solved huh? After completing the first two layers, the next 
+						step is to make a cross on the yellow side, like we did in the beginning, except there's algorithms 
+						this time. Ignoring the corners, the top can look like one of three things:
+					</p>
+					<p style="padding:0em 10em">
+						1. Like a V
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						2. Like an I 
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						3. Like a period
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+				</div>
+				<div id="Swap Edges" class="tabcontent">
+					<h3>Making a Good Cross</h3>
+					<p>
+						So now we have a cross, but it may or may not be a good cross like the one we made in the first layer. So we gotta fix that.
+						If it's not a good cross, there's only one scenario you'll have to look for:
+					</p>
+					<p style="padding:0em 10em">
+						1. Two edges are the right color, and adjacent edges are swapped
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+
+				</div>
+				<div id="Swap Corners" class="tabcontent">
+					<h3>Placing the Corners</h3>
+					<p>
+						Now that our yellow cross is perfect, we have to get these corners right. The first step to accomplishing that 
+						is to make sure the corners are in the right spot. We'll only need one algorithm that cycles three of the corners' 
+						positions counter-clockwise, while one stays in the same spot. If none of the corners are in the right spot, then 
+						just do the algorithm anywhere, and then one corner will be in the right spot.
+					</p>
+					<p style="padding:0em 10em">
+						1. Corners need to move counter-clockwise, takes one iteration
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						2. Corners need to move counter-clockwise, takes two iterations
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						3. No corners are in the right spot, takes two or three iterations
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+
+				</div>
+				<div id="Flip Corners" class="tabcontent">
+					<h3>Solid Top Layer</h3>
+					<p>
+						We're almost done! The corners are in the right spot, so now we're on step away from solving the cube. 
+						To do that we'll have to flip the corners so that the yellow sticker is facing up. Here, we're going to 
+						hold the cube sideways, and repeat a four turn motion until a corner is solved, and then move 
+						another unsolved corner in, repeating the process until all corners are turned up.
+					</p>
+					<p style="padding:0em 10em">
+						1. Example
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						2. Anotha one
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
+					<p style="padding:0em 10em">
+						2. Yet another example
+					</p>
+					<div class="row">
+						<button>Setup</button>
+						<button>Solve</button>
+					</div>
 				</div>
 			</div>
-			<div class="column" id="learning" style="background-color: coral"></div>
+			<div class="column">
+				<iframe id="iframe" frameBorder="0" src="cube.html" style="height:100%; width: 100%"></iframe>
+			</div>
 		</div>
 
 		<script charset="utf-8">
-			var iframe = document.getElementById("iframe");
-			var win = iframe.contentWindow;
-			function reset(){
-				win.location.reload(true);
+			function openTab(evt, tabName) {
+				var i, tabcontent, tablinks;
+				tabcontent = document.getElementsByClassName("tabcontent");
+				for (i = 0; i < tabcontent.length; i++) {
+					tabcontent[i].style.display = "none";
+				}
+
+				tablinks = document.getElementsByClassName("tablinks");
+				for (i = 0; i < tablinks.length; i++) {
+					tablinks[i].className = tablinks[i].className.replace(" active", "");
+				}
+
+				document.getElementById(tabName).style.display = "block";
+				evt.currentTarget.className += " active";
 			}
-			function shuffle() {
-				win.cube.shuffle(20);
-			}
+			document.getElementById("defaultOpen").click();
 		</script>	
-		
+
+		<script charset="utf-8">
+			function executeAlg(alg) {
+				var cube = document.getElementById("iframe").contentWindow.cube;
+				cube.twist(alg);
+			}
+		</script>
 	</body>
 
 </html>
