@@ -151,8 +151,8 @@
 					</p>
 
 					<div class="row">
-						<button onclick="executeAlg('fdf')">Example of a good cross</button>
-						<button>Example of a bad cross</button>
+						<button onclick="resetAndExecute('FFRUUbrudFrLlDBdlDuFrfBubX')">Example of a good cross</button>
+						<button onclick="resetAndExecute('FFRUUbrudFrLlBluFRRFRyX')">Example of a bad cross</button>
 					</div>
 				</div>
 				<div id="Bottom Corners" class="tabcontent">
@@ -160,28 +160,28 @@
 					<p>
 						After getting the cross down, the next step is to solve the corners of the first layer. So, one at a time, you'll look for the white 
 						corners. When you find one, if it's in the third layer, then you want to move it above the corner where it should be. Now, there's three different 
-						scenarios, depending on which way the white sticker is facing.
+						scenarios, depending on which way the white sticker is facing. Here I'll be using the orange blue corner as an example.
 					</p>
 					<p style="padding:0em 10em">
 						1. It's facing left
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('fuuFuRUrubuBUlULuBUbbuBubuBu')">Setup</button>
+						<button onclick="executeAlg('ruR')">Solve</button>
 					</div>
 					<p style="padding:0em 10em">
 						2. It's facing right
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('RuurUFufubuBUlULuBUbuu')">Setup</button>
+						<button onclick="executeAlg('RUr')">Solve</button>
 					</div>
 					<p style="padding:0em 10em">
 						3. It's facing up
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('fuuFURurubuBUlULuBUbbuBu')">Setup</button>
+						<button onclick="executeAlg('RurUURUr')">Solve</button>
 					</div>
 				</div>
 				<div id="Middle Edges" class="tabcontent">
@@ -198,22 +198,22 @@
 						2. It's in the top layer, and the middle layer sticker it connects to is on the left. 
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('ufUFURurufUFURur')">Setup</button>
+						<button onclick="executeAlg('URurufUF')">Solve</button>
 					</div>
 					<p style="padding:0em 10em">
 						3. It's in the top layer, and the middle layer sticker it connects to is on the right. 
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('URurufUFURurufUF')">Setup</button>
+						<button onclick="executeAlg('ufUFURur')">Solve</button>
 					</div>
 					<p style="padding:0em 10em">
 						4. It's already in the right place, but the orientation is wrong. :(
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('URurufUFUUURurufUF')">Setup</button>
+						<button onclick="executeAlg('URurufUFUUURurufUF')">Solve</button>
 					</div>
 				</div>
 				<div id="Top Edges" class="tabcontent">
@@ -227,22 +227,22 @@
 						1. Like a V
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('FURurfFURurf')">Setup</button>
+						<button onclick="executeAlg('FURurf')">Solve</button>
 					</div>
 					<p style="padding:0em 10em">
 						2. Like an I 
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('FRUrufFRUruf')">Setup</button>
+						<button onclick="executeAlg('FRUruf')">Solve</button>
 					</div>
 					<p style="padding:0em 10em">
 						3. Like a period
 					</p>
 					<div class="row">
-						<button>Setup</button>
-						<button>Solve</button>
+						<button onclick="resetAndExecute('RUUrrFRfuurFRf')">Setup</button>
+						<button onclick="executeAlg('FRUrufUUFURurf')">Solve</button>
 					</div>
 				</div>
 				<div id="Swap Edges" class="tabcontent">
@@ -347,11 +347,18 @@
 		</script>	
 
 		<script charset="utf-8">
+			function resetCube() {
+				document.getElementById("iframe").contentLocation.reload();
+			}
 			function executeAlg(alg) {
 				var cube = document.getElementById("iframe").contentWindow.cube;
 				cube.twist(alg);
 			}
-		</script>
+			function resetAndExecute(alg) {
+				resetCube();
+				executeAlg(alg);
+			}
+		</script>	
 	</body>
 
 </html>
