@@ -356,8 +356,11 @@
 				cube.twist(alg);
 			}
 			function resetAndExecute(alg) {
+				var iframe = document.getElementById("iframe");
 				resetCube();
-				executeAlg(alg);
+				iframe.addEventListener("load", function() {
+					executeAlg(alg);
+				});
 			}
 		</script>	
 	</body>
